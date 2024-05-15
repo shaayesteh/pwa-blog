@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="./styles.css" />
+
+    <title>PWA</title>
+  </head>
+  <body>
+    <header>
+      <h1>PWA Blog</h1>
+      <img src="pwa-img.png" alt="" />
+      <button id="darkModeToggle">Toggle Dark Mode</button>
+    </header>
+    <main>
+      <article id="post1" class="post">
+        <h2>What is PWA?</h2>
+        <p>
+          A progressive web app (PWA) is an app that's built using web platform
+          technologies...
+        </p>
+        <a href="post1.html">Read more</a>
+      </article>
+      <article id="post2" class="post">
+        <h2>Making PWAs installable</h2>
+        <p>
+          For a web app to be promoted for installation by a supporting browser,
+          it needs to meet some technical requirements...
+        </p>
+        <a href="post2.html">Read more</a>
+      </article>
+    </main>
+
+    <script src="./script.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/sw.js")
+            .then((registration) => {
+              console.log(
+                "Service Worker registered with scope:",
+                registration.scope
+              );
+            })
+            .catch((error) => {
+              console.error("Service Worker registration failed:", error);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>
